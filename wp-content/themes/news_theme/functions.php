@@ -234,3 +234,81 @@ function set_default_category($post_id, $post)
 	}
 }
 add_action('save_post', 'set_default_category', 10, 2);
+
+
+// إضافة قسم تصنيفات مخصصة نحدد من خلالها موقع عرض الخبر في أقسام الصفحة الرئيسية
+function wp_news_register_taxonomy_front_position()
+{
+	$labels = array(
+		'name'              => _x('موقع العرض', 'taxonomy general name'),
+		'singular_name'     => _x('موقع العرض', 'taxonomy singular name'),
+		'search_items'      => __('ابحث عن موقع العرض'),
+		'all_items'         => __('جميع مواقع العرض'),
+		'parent_item'       => __('موقع العرض للوالدين'),
+		'parent_item_colon' => __('موقع العرض للوالدين'),
+		'edit_item'         => __('تعديل موقع العرض'),
+		'update_item'       => __('تحديث موقع العرض'),
+		'add_new_item'      => __('إضافة موقع عرض جديد'),
+		'new_item_name'     => __('اسم موقع العرض الجديد'),
+		'menu_name'         => __('موقع العرض'),
+	);
+	$args   = array(
+		'hierarchical'      => true,
+		'labels'            => $labels,
+		'show_ui'           => true,
+		'show_admin_column' => true,
+		'query_var'         => true,
+		'rewrite'           => ['slug' => 'front_position'],
+		'show_in_rest' => true,
+	);
+	register_taxonomy('front_position', ['post'], $args);
+}
+add_action('init', 'wp_news_register_taxonomy_front_position');
+
+
+// إضافة أسماء التصنيفات المخصصة للقسم الذي أنشأناه سابقًا
+function wp_news_insert_taxonomy_terms_front_position()
+{
+	wp_insert_term(
+		'الأخبار الأمامية',
+		'front_position',
+		array(
+			'description ' => '',
+			'slug' => 'front-news',
+		)
+	);
+	wp_insert_term(
+		'أخبار الرأس',
+		'front_position',
+		array(
+			'description ' => '',
+			'slug' => 'header-news',
+		)
+	);
+	wp_insert_term(
+		'أخبار الدوار',
+		'front_position',
+		array(
+			'description ' => '',
+			'slug' => 'image-slider',
+		)
+	);
+}
+add_action('init', 'wp_news_insert_taxonomy_terms_front_position');
+
+ // إضافة موقع عرض افتراضي في حال لم يحدد موقع عرض للخبر
+ function mfields_set_default_object_terms( $post_id, $post ) {
+    if ( 'publish' === $post->post_status ) {
+        $defaults = array(
+            'front_position' => array( 'front-news' )
+            );
+        $taxonomies = get_object_taxonomies( $post->post_type );
+        foreach ( (array) $taxonomies as $taxonomy ) {
+            $terms = wp_get_post_terms( $post_id, $taxonomy );
+            if ( empty( $terms ) && array_key_exists( $taxonomy, $defaults ) ) {
+                wp_set_object_terms( $post_id, $defaults[$taxonomy], $taxonomy );
+            }
+        }
+    }
+}
+add_action( 'save_post', 'mfields_set_default_object_terms', 10, 2 );
