@@ -30,7 +30,7 @@ get_header();
 						<div class="carousel-inner">
 							<div class="carousel-item active">
 								<a href="article.html">
-									<img src="./images/picture-1.jpg" class="d-block w-100" alt="...">
+									<img src="<?php echo get_template_directory_uri() . './images/picture-12.jpg' ?>" class="d-block w-100" alt="...">
 									<div class="carousel-text">
 										<h3>لوريوم سبيوم: لوريم إيبسوم هو ببساطة نص شكلي</h3>
 									</div>
@@ -38,7 +38,7 @@ get_header();
 							</div>
 							<div class="carousel-item">
 								<a href="article.html">
-									<img src="./images/picture-4.jpg" class="d-block w-100" alt="...">
+									<img src="<?php echo get_template_directory_uri() . './images/picture-4.jpg' ?>" class="d-block w-100" alt="...">
 									<div class="carousel-text">
 										<h3>لوريوم سبيوم: لوريم إيبسوم هو ببساطة نص شكلي</h3>
 									</div>
@@ -46,7 +46,7 @@ get_header();
 							</div>
 							<div class="carousel-item">
 								<a href="article.html">
-									<img src="./images/picture-7.jpg" class="d-block w-100" alt="...">
+									<img src="<?php echo get_template_directory_uri() . './images/picture-7.jpg' ?>" class="d-block w-100" alt="...">
 									<div class="carousel-text">
 										<h3>لوريوم سبيوم: لوريم إيبسوم هو ببساطة نص شكلي</h3>
 									</div>
@@ -61,7 +61,7 @@ get_header();
 					<a href="article.html" class="article-link">
 						<div class="row">
 							<div class="col-5">
-								<img src="./images/picture-12.jpg" alt="...">
+								<img src="<?php echo get_template_directory_uri() . './images/picture-16.jpg' ?>" alt="...">
 							</div>
 							<div class="col-7">
 								<div class="article-text">
@@ -76,7 +76,7 @@ get_header();
 					<a href="article.html" class="article-link">
 						<div class="row">
 							<div class="col-5">
-								<img src="./images/picture-13.jpg" alt="...">
+								<img src="<?php echo get_template_directory_uri() . './images/picture-13.jpg' ?>" alt="...">
 							</div>
 							<div class="col-7">
 								<div class="article-text">
@@ -91,7 +91,7 @@ get_header();
 					<a href="article.html" class="article-link">
 						<div class="row">
 							<div class="col-5">
-								<img src="./images/picture-5.jpg" alt="...">
+								<img src="<?php echo get_template_directory_uri() . './images/picture-5.jpg' ?>" alt="...">
 							</div>
 							<div class="col-7">
 								<div class="article-text">
@@ -118,7 +118,7 @@ get_header();
 			<div class="row">
 				<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
 					<a href="./article.html" class="article-link">
-						<img class="news-img" src="./images/picture-12.jpg" alt="...">
+						<img src="<?php echo get_template_directory_uri() . './images/picture-4.jpg' ?>" class="news-img" alt="...">
 						<div class="article-text mt-3">
 							<span class="article-category">
 								اقتصاد
@@ -131,7 +131,7 @@ get_header();
 				</div>
 				<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
 					<a href="./article.html" class="article-link">
-						<img src="./images/picture-1.jpg" alt="...">
+						<img src="<?php echo get_template_directory_uri() . './images/picture-6.jpg' ?>" alt="...">
 						<div class="article-text mt-3">
 							<span class="article-category">
 								اقتصاد
@@ -144,7 +144,7 @@ get_header();
 				</div>
 				<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
 					<a href="./article.html" class="article-link">
-						<img src="./images/picture-2.jpg" alt="...">
+						<img src="<?php echo get_template_directory_uri() . './images/picture-7.jpg' ?>" alt="...">
 						<div class="article-text mt-3">
 							<span class="article-category">
 								اقتصاد
@@ -157,7 +157,7 @@ get_header();
 				</div>
 				<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
 					<a href="./article.html" class="article-link">
-						<img src="./images/picture-3.jpg" alt="...">
+						<img src="<?php echo get_template_directory_uri() . './images/picture-3.jpg' ?>" alt="...">
 						<div class="article-text mt-3">
 							<span class="article-category">
 								اقتصاد
@@ -170,7 +170,7 @@ get_header();
 				</div>
 				<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
 					<a href="./article.html" class="article-link">
-						<img src="./images/picture-10.jpg" alt="...">
+						<img src="<?php echo get_template_directory_uri() . './images/picture-10.jpg' ?>" alt="...">
 						<div class="article-text mt-3">
 							<span class="article-category">
 								اقتصاد
@@ -183,7 +183,7 @@ get_header();
 				</div>
 				<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
 					<a href="./article.html" class="article-link">
-						<img src="./images/picture-14.jpg" alt="...">
+						<img src="<?php echo get_template_directory_uri() . './images/picture-5.jpg' ?>" alt="...">
 						<div class="article-text mt-3">
 							<span class="article-category">
 								اقتصاد
@@ -196,7 +196,7 @@ get_header();
 				</div>
 				<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
 					<a href="./article.html" class="article-link">
-						<img src="./images/picture-15.jpg" alt="...">
+						<img src="<?php echo get_template_directory_uri() . './images/picture-15.jpg' ?>" alt="...">
 						<div class="article-text mt-3">
 							<span class="article-category">
 								اقتصاد
@@ -209,7 +209,7 @@ get_header();
 				</div>
 				<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
 					<a href="./article.html" class="article-link">
-						<img src="./images/picture-13.jpg" alt="...">
+						<img src="<?php echo get_template_directory_uri() . './images/picture-13.jpg' ?>" alt="...">
 						<div class="article-text mt-3">
 							<span class="article-category">
 								اقتصاد
@@ -238,7 +238,7 @@ get_header();
 				<a href="./article.html">
 					<div class="row">
 						<div class="col-md-5">
-							<img src="./images/picture-12.jpg" alt="...">
+							<img src="<?php echo get_template_directory_uri() . './images/picture-15.jpg' ?>" alt="...">
 						</div>
 						<div class="col-md-7">
 							<div class="card-text">
@@ -262,7 +262,7 @@ get_header();
 				<a href="./article.html">
 					<div class="row">
 						<div class="col-md-5">
-							<img src="./images/picture-12.jpg" alt="...">
+							<img src="<?php echo get_template_directory_uri() . './images/picture-12.jpg' ?>" alt="...">
 						</div>
 						<div class="col-md-7">
 							<div class="card-text">
@@ -286,7 +286,7 @@ get_header();
 				<a href="./article.html">
 					<div class="row">
 						<div class="col-md-5">
-							<img src="./images/picture-12.jpg" alt="...">
+							<img src="<?php echo get_template_directory_uri() . './images/picture-12.jpg' ?>" alt="...">
 						</div>
 						<div class="col-md-7">
 							<div class="card-text">
@@ -319,7 +319,7 @@ get_header();
 				<div class="col-sm-6 col-md-4 col-lg-3">
 					<div class="card mb-4">
 						<div class="card-icons">
-							<img src="./images/picture-13.jpg" alt="...">
+							<img src="<?php echo get_template_directory_uri() . './images/picture-13.jpg'?>" alt="...">
 						</div>
 
 						<div class="card-body p-0">
@@ -333,7 +333,7 @@ get_header();
 							</small>
 						</div>
 						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="./images/user_img/user_1.jpg" alt="...">
+							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri().'./images/user_img/user_1.jpg'?>" alt="...">
 							<span class="card-text ms-2">أحمد محمد</span>
 						</a>
 					</div>
@@ -342,7 +342,7 @@ get_header();
 				<div class="col-sm-6 col-md-4 col-lg-3">
 					<div class="card mb-4">
 						<div class="card-icons">
-							<img src="./images/picture-12.jpg" alt="...">
+							<img src="<?php echo get_template_directory_uri() . './images/picture-12.jpg' ?>" alt="...">
 						</div>
 
 						<div class="card-body p-0">
@@ -356,7 +356,7 @@ get_header();
 							</small>
 						</div>
 						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="./images/user_img/user_1.jpg" alt="...">
+							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg'?>" alt="...">
 							<span class="card-text ms-2">أحمد محمد</span>
 						</a>
 					</div>
@@ -365,7 +365,7 @@ get_header();
 				<div class="col-sm-6 col-md-4 col-lg-3">
 					<div class="card mb-4">
 						<div class="card-icons">
-							<img src="./images/picture-3.jpg" alt="...">
+							<img src="<?php echo get_template_directory_uri() . './images/picture-3.jpg' ?>" alt="...">
 						</div>
 
 						<div class="card-body p-0">
@@ -379,7 +379,7 @@ get_header();
 							</small>
 						</div>
 						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="./images/user_img/user_1.jpg" alt="...">
+							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg'?>" alt="...">
 							<span class="card-text ms-2">أحمد محمد</span>
 						</a>
 					</div>
@@ -388,7 +388,7 @@ get_header();
 				<div class="col-sm-6 col-md-4 col-lg-3">
 					<div class="card mb-4">
 						<div class="card-icons">
-							<img src="./images/picture-10.jpg" alt="...">
+							<img src="<?php echo get_template_directory_uri() . './images/picture-10.jpg' ?>" alt="...">
 						</div>
 
 						<div class="card-body p-0">
@@ -402,7 +402,7 @@ get_header();
 							</small>
 						</div>
 						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="./images/user_img/user_1.jpg" alt="...">
+							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg'?>" alt="...">
 							<span class="card-text ms-2">أحمد محمد</span>
 						</a>
 					</div>
@@ -411,7 +411,7 @@ get_header();
 				<div class="col-sm-6 col-md-4 col-lg-3">
 					<div class="card mb-4">
 						<div class="card-icons">
-							<img src="./images/picture-6.jpg" alt="...">
+							<img src="<?php echo get_template_directory_uri() . './images/picture-6.jpg' ?>" alt="...">
 						</div>
 
 						<div class="card-body p-0">
@@ -425,7 +425,7 @@ get_header();
 							</small>
 						</div>
 						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="./images/user_img/user_1.jpg" alt="...">
+							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg'?>" alt="...">
 							<span class="card-text ms-2">أحمد محمد</span>
 						</a>
 					</div>
@@ -434,7 +434,7 @@ get_header();
 				<div class="col-sm-6 col-md-4 col-lg-3">
 					<div class="card mb-4">
 						<div class="card-icons">
-							<img src="./images/picture-8.jpg" alt="...">
+							<img src="<?php echo get_template_directory_uri() . './images/picture-4.jpg' ?>" alt="...">
 						</div>
 
 						<div class="card-body p-0">
@@ -448,7 +448,7 @@ get_header();
 							</small>
 						</div>
 						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="./images/user_img/user_1.jpg" alt="...">
+							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg'?>" alt="...">
 							<span class="card-text ms-2">أحمد محمد</span>
 						</a>
 					</div>
@@ -457,7 +457,7 @@ get_header();
 				<div class="col-sm-6 col-md-4 col-lg-3">
 					<div class="card mb-4">
 						<div class="card-icons">
-							<img src="./images/picture-7.jpg" alt="...">
+							<img src="<?php echo get_template_directory_uri() . './images/picture-7.jpg' ?>" alt="...">
 						</div>
 
 						<div class="card-body p-0">
@@ -471,7 +471,7 @@ get_header();
 							</small>
 						</div>
 						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="./images/user_img/user_1.jpg" alt="...">
+							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg'?>" alt="...">
 							<span class="card-text ms-2">أحمد محمد</span>
 						</a>
 					</div>
@@ -480,7 +480,7 @@ get_header();
 				<div class="col-sm-6 col-md-4 col-lg-3">
 					<div class="card mb-4">
 						<div class="card-icons">
-							<img src="./images/picture-6.jpg" alt="...">
+							<img src="<?php echo get_template_directory_uri() . './images/picture-6.jpg' ?>" alt="...">
 						</div>
 
 						<div class="card-body p-0">
@@ -494,7 +494,7 @@ get_header();
 							</small>
 						</div>
 						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="./images/user_img/user_1.jpg" alt="...">
+							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg'?>" alt="...">
 							<span class="card-text ms-2">أحمد محمد</span>
 						</a>
 					</div>
@@ -520,7 +520,7 @@ get_header();
 					<div class="swiper-slide">
 						<a href="article.html" class="article-link">
 							<div class="slide-img">
-								<img src="./images/picture-13.jpg" alt="...">
+								<img src="<?php echo get_template_directory_uri() . './images/picture-13.jpg' ?>" alt="...">
 								<i class="fa-solid fa-play"></i>
 							</div>
 							<div class="slide-text">
@@ -533,7 +533,7 @@ get_header();
 					<div class="swiper-slide">
 						<a href="article.html" class="article-link">
 							<div class="slide-img">
-								<img src="./images/picture-17.jpg" alt="...">
+								<img src="<?php echo get_template_directory_uri() . './images/picture-17.jpg' ?>" alt="...">
 								<i class="fa-solid fa-play"></i>
 							</div>
 							<div class="slide-text">
@@ -546,7 +546,7 @@ get_header();
 					<div class="swiper-slide">
 						<a href="article.html" class="article-link">
 							<div class="slide-img">
-								<img src="./images/picture-16.jpg" alt="...">
+								<img src="<?php echo get_template_directory_uri() . './images/picture-16.jpg' ?>" alt="...">
 								<i class="fa-solid fa-play"></i>
 							</div>
 							<div class="slide-text">
@@ -559,7 +559,7 @@ get_header();
 					<div class="swiper-slide">
 						<a href="article.html" class="article-link">
 							<div class="slide-img">
-								<img src="./images/picture-15.jpg" alt="...">
+								<img src="<?php echo get_template_directory_uri() . './images/picture-15.jpg' ?>" alt="...">
 								<i class="fa-solid fa-play"></i>
 							</div>
 							<div class="slide-text">
@@ -572,7 +572,7 @@ get_header();
 					<div class="swiper-slide">
 						<a href="article.html" class="article-link">
 							<div class="slide-img">
-								<img src="./images/picture-14.jpg" alt="...">
+								<img src="<?php echo get_template_directory_uri() . './images/picture-14.jpg' ?>" alt="...">
 								<i class="fa-solid fa-play"></i>
 							</div>
 							<div class="slide-text">
@@ -585,7 +585,7 @@ get_header();
 					<div class="swiper-slide">
 						<a href="article.html" class="article-link">
 							<div class="slide-img">
-								<img src="./images/picture-5.jpg" alt="...">
+								<img src="<?php echo get_template_directory_uri() . './images/picture-5.jpg' ?>" alt="...">
 								<i class="fa-solid fa-play"></i>
 							</div>
 							<div class="slide-text">
@@ -609,7 +609,7 @@ get_header();
 			<div class="row">
 				<div class="col-md-6">
 					<a href="article.html" class="article-link">
-						<img src="./images/picture-17.jpg" alt="...">
+						<img src="<?php echo get_template_directory_uri() . './images/picture-17.jpg' ?>" alt="...">
 						<div class="card-text my-3">
 							<span class="article-category">اقتصاد</span>
 							<h5 class="article-title">لوريوم أيكسسيبتيور الأحمد نص</h5>
@@ -625,7 +625,7 @@ get_header();
 					<a href="article.html" class="article-link">
 						<div class="row">
 							<div class="col-sm-6">
-								<img src="./images/picture-10.jpg" alt="...">
+								<img src="<?php echo get_template_directory_uri() . './images/picture-10.jpg' ?>" alt="...">
 							</div>
 							<div class="col-sm-6">
 								<div class="card-text mb-3 card-text-2">
@@ -642,7 +642,7 @@ get_header();
 					<div class="row mt-4">
 						<div class="col-sm-6">
 							<a href="article.html" class="article-link">
-								<img src="./images/picture-13.jpg" alt="...">
+								<img src="<?php echo get_template_directory_uri() . './images/picture-13.jpg' ?>" alt="...">
 								<div class="card-text my-3">
 									<span class="article-category">
 										حاسوب
@@ -655,7 +655,7 @@ get_header();
 						</div>
 						<div class="col-sm-6">
 							<a href="article.html" class="article-link">
-								<img src="./images/picture-12.jpg" alt="...">
+								<img src="<?php echo get_template_directory_uri() . './images/picture-17.jpg' ?>" alt="...">
 								<div class="card-text my-3">
 									<span class="article-category">
 										اخبار
@@ -677,5 +677,4 @@ get_header();
 </main>
 
 <?php
-get_sidebar();
 get_footer();

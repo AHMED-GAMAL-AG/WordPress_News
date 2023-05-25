@@ -190,8 +190,19 @@ function news_css_enqueue()
 	wp_enqueue_style('fontawesome', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css', array(), null);
 	wp_enqueue_style('fontawesome-v5', 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css', array(), null);
 	wp_enqueue_style('style', get_template_directory_uri() . '/css/style.css', array(), rand(111, 9999)); // empty array for no dependencies , rand for version so it will not cache only for development
-	wp_enqueue_style('article_style', get_template_directory_uri() . '/css/article.css', array(), rand(111, 9999)); 
-	wp_enqueue_style('search_style', get_template_directory_uri() . '/css/search.css', array(), rand(111, 9999)); 
+	wp_enqueue_style('article_style', get_template_directory_uri() . '/css/article.css', array(), rand(111, 9999));
+	wp_enqueue_style('search_style', get_template_directory_uri() . '/css/search.css', array(), rand(111, 9999));
 }
 
 add_action('wp_enqueue_scripts', 'news_css_enqueue'); // wp_enqueue_scripts is a hook 
+
+
+
+function news_script_enqueue()
+{
+	wp_enqueue_script('swiper.js', 'https://cdn.jsdelivr.net/npm/swiper@8/swiper-bundle.min.js', array(), 1.0, true);
+	wp_enqueue_script('popperjs', 'https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js', array(), 1.0, true);
+	wp_enqueue_script('bootstrap.js', 'https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js', array(), 1.0, true);
+	wp_enqueue_script('script', get_template_directory_uri() . '/js/index.js', array(), rand(111, 9999), true);
+}
+add_action('wp_enqueue_scripts', 'news_script_enqueue');
