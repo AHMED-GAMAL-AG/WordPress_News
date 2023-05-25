@@ -206,3 +206,31 @@ function news_script_enqueue()
 	wp_enqueue_script('script', get_template_directory_uri() . '/js/index.js', array(), rand(111, 9999), true);
 }
 add_action('wp_enqueue_scripts', 'news_script_enqueue');
+
+function insert_category()
+{
+	$category = ['رياضة', 'أقتصاد', 'تكنولوجيا', 'أخبار'];
+	$slug = ['sport', 'economy', 'technology', 'news'];
+
+	for ($i = 0; $i < count($category); $i++) {
+		wp_insert_term($category[$i], 'category', ['description' => ' ', 'slug' => $slug[$i]]);
+	}
+}
+add_action('after_setup_theme', 'insert_category');
+
+function set_default_category($post_id, $post)
+{
+	if ('publish' === $post->post_status) {
+		$defaults = ['category' => ['sport']];
+
+		$taxonomies = get_object_taxonomies($post->post_type);
+
+		foreach ((array) $taxonomies as $taxonomy) { // can select more than one category
+			$terms = wp_get_post_terms($post_id, $taxonomy);
+			if (empty($terms) && array_key_exists($taxonomy, $defaults)) {
+				wp_set_object_terms($post_id, $defaults[$taxonomy], $taxonomy);
+			}
+		}
+	}
+}
+add_action('save_post', 'set_default_category', 10, 2);
