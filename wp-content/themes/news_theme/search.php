@@ -1,53 +1,58 @@
 <?php
+
 /**
  * The template for displaying search results pages
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#search-result
  *
- * @package news_app
+ * @package News-Hsoub
  */
 
 get_header();
 ?>
+<main>
+	<div class="container my-5">
+		<div class="row">
+			<div class="col-md-8">
+				<div class="search-line">
+					<h3 class=" mt-5">نتائج البحث عن "<?php echo get_search_query() ?>"</h3>
+				</div>
+				<?php if (have_posts()) : while (have_posts()) : ?>
+						<?php the_post(); ?>
+						<div class="search-articles" id="search-articles">
+							<div class="article-card">
+								<a href="<?php the_permalink(); ?>" class="article-link">
+									<div class="row">
+										<div class="col-md-4">
+											<a href="<?php the_permalink(); ?>">
+												<?php if (has_post_thumbnail()) {
+													the_post_thumbnail();
+												} else { ?>
+													<img src="<?php bloginfo('template_directory'); ?>/images/default.jpg" alt="<?php the_title(); ?>" />
+												<?php } ?>
+											</a>
+										</div>
+										<div class="col-md-8">
+											<h4><?php the_title(); ?></h4>
+											<?php the_excerpt(); ?>
+											<time datetime="<?php the_time('d/m/Y'); ?>"><?php the_time('j F Y'); ?></time>
+										</div>
+									</div>
+								</a>
+							</div>
+						</div>
+					<?php endwhile; ?>
 
-	<main id="primary" class="site-main">
+				<?php else : ?>
+					<div class="alert alert-danger mt-5" role="alert">
+						للأسف لا يوجد أخبار عن "<?php echo get_search_query() ?>"، يرجى البحث عن موضوع محدد أكثر
+					</div>
+				<?php endif; ?>
+			</div>
+		</div>
+	</div>
+</main>
 
-		<?php if ( have_posts() ) : ?>
-
-			<header class="page-header">
-				<h1 class="page-title">
-					<?php
-					/* translators: %s: search query. */
-					printf( esc_html__( 'Search Results for: %s', 'news_app' ), '<span>' . get_search_query() . '</span>' );
-					?>
-				</h1>
-			</header><!-- .page-header -->
-
-			<?php
-			/* Start the Loop */
-			while ( have_posts() ) :
-				the_post();
-
-				/**
-				 * Run the loop for the search to output the results.
-				 * If you want to overload this in a child theme then include a file
-				 * called content-search.php and that will be used instead.
-				 */
-				get_template_part( 'template-parts/content', 'search' );
-
-			endwhile;
-
-			the_posts_navigation();
-
-		else :
-
-			get_template_part( 'template-parts/content', 'none' );
-
-		endif;
-		?>
-
-	</main><!-- #main -->
 
 <?php
-get_sidebar();
 get_footer();

@@ -323,3 +323,15 @@ function my_custom_menu()
 	);
 }
 add_action('init', 'my_custom_menu');
+
+function custom_search_form($form)
+{
+	$form = '<form class="d-flex" role="search" method="get" action="' . home_url('/') . '" >
+                <input class="form-control me-2" type="search" placeholder="ابحث..." aria-label="Search" value="' . get_search_query() . '" name="s">
+                <button type="submit" class="search-icon border-0 bg-white" />
+                    <span class="icon"><i class="fa-solid fa-magnifying-glass"></i></span>   
+                </button>
+            </form>';
+	return $form;
+}
+add_filter('get_search_form', 'custom_search_form');

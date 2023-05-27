@@ -54,10 +54,7 @@
 					<div class="login-button">
 						<a href="login.html" class="button">تسجيل الدخول</a>
 					</div>
-					<form class="d-flex" role="search">
-						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-						<a href="./search.html" class="search-icon"><i class="fa-solid fa-magnifying-glass"></i></a>
-					</form>
+					<?php get_search_form(); ?>
 				</div>
 			</div>
 		</nav>
