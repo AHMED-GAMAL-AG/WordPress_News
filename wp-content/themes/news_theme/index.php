@@ -27,82 +27,98 @@ get_header();
 							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2">2</button>
 							<button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3">3</button>
 						</div>
-						<div class="carousel-inner">
-							<div class="carousel-item active">
-								<a href="article.html">
-									<img src="<?php echo get_template_directory_uri() . './images/picture-12.jpg' ?>" class="d-block w-100" alt="...">
-									<div class="carousel-text">
-										<h3>لوريوم سبيوم: لوريم إيبسوم هو ببساطة نص شكلي</h3>
+
+
+						<?php
+						$query = new WP_Query(array(
+							'post_type' => 'post',
+							'posts_per_page' => 3,
+							'tax_query' => array(
+								array(
+									'taxonomy' => 'front_position', // taxonomy name
+									'field' => 'slug',
+									'terms' => 'image-slider', // the slug name for the أخبار الدوار
+								)
+							)
+						));
+						while ($query->have_posts()) : $query->the_post();
+							if ($query->current_post == 0) { // if first post set active class for carousel item
+						?>
+								<div class="carousel-inner">
+									<div class="carousel-item active">
+										<a href="<?php the_permalink(); ?>">
+											<?php if (has_post_thumbnail()) {
+												the_post_thumbnail();
+											} else { ?>
+												<img src="<?php bloginfo('template_directory'); ?>/images/default.jpg" alt="<?php the_title(); ?>" />
+											<?php } ?>
+										</a>
+										<div class="carousel-text">
+											<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+										</div>
 									</div>
-								</a>
-							</div>
-							<div class="carousel-item">
-								<a href="article.html">
-									<img src="<?php echo get_template_directory_uri() . './images/picture-4.jpg' ?>" class="d-block w-100" alt="...">
-									<div class="carousel-text">
-										<h3>لوريوم سبيوم: لوريم إيبسوم هو ببساطة نص شكلي</h3>
+								<?php
+							} else { ?>
+									<div class="carousel-item">
+										<a href="<?php the_permalink(); ?>">
+											<?php if (has_post_thumbnail()) {
+												the_post_thumbnail();
+											} else { // show the default image if the post doesn't have a thumbnail
+											?>
+												<img src="<?php bloginfo('template_directory'); ?>/images/default.jpg" alt="<?php the_title(); ?>" />
+											<?php } ?>
+										</a>
+										<div class="carousel-text">
+											<h3><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h3>
+										</div>
 									</div>
-								</a>
-							</div>
-							<div class="carousel-item">
-								<a href="article.html">
-									<img src="<?php echo get_template_directory_uri() . './images/picture-7.jpg' ?>" class="d-block w-100" alt="...">
-									<div class="carousel-text">
-										<h3>لوريوم سبيوم: لوريم إيبسوم هو ببساطة نص شكلي</h3>
-									</div>
-								</a>
-							</div>
-						</div>
+							<?php
+							}
+						endwhile; ?>
+								</div>
+
+
 					</div>
 				</div>
 			</div>
 			<div class="col-lg-5">
 				<div class="header-articles">
-					<a href="article.html" class="article-link">
+					<?php
+					$query = new WP_Query(array(
+						'post_type' => 'post',
+						'posts_per_page' => 3,
+						'tax_query' => array(
+							array(
+								'taxonomy' => 'front_position', // taxonomy name
+								'field' => 'slug',
+								'terms' => 'header-news', // the slug name for the أخبار الرأس
+							)
+						)
+					));
+					while ($query->have_posts()) : $query->the_post();
+
+					?>
 						<div class="row">
 							<div class="col-5">
-								<img src="<?php echo get_template_directory_uri() . './images/picture-16.jpg' ?>" alt="...">
+								<a href="<?php the_permalink(); ?>">
+									<?php if (has_post_thumbnail()) {
+										the_post_thumbnail();
+									} else { ?>
+										<img src="<?php bloginfo('template_directory'); ?>/images/default.jpg" alt="<?php the_title(); ?>" />
+									<?php } ?>
+								</a>
 							</div>
 							<div class="col-7">
 								<div class="article-text">
-									<span class="article-category">
-										اخبار
+									<span class="article-category ">
+										<?php the_category(' ، ') // the , if their is more than one category
+										?>
 									</span>
-									<h5 class="article-title">لوريم إيبسوم هو ببساطة نص شكلي ويُستخدم في صناعات المطابع ودور النشر حسوب والأكاديمية، لوريوم أيبسويوم</h5>
+									<h5 class="article-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
 								</div>
 							</div>
 						</div>
-					</a>
-					<a href="article.html" class="article-link">
-						<div class="row">
-							<div class="col-5">
-								<img src="<?php echo get_template_directory_uri() . './images/picture-13.jpg' ?>" alt="...">
-							</div>
-							<div class="col-7">
-								<div class="article-text">
-									<span class="article-category">
-										اخبار
-									</span>
-									<h5 class="article-title">لوريم إيبسوم هو ببساطة نص شكلي ويُستخدم في صناعات المطابع ودور النشر حسوب والأكاديمية، لوريوم أيبسويوم</h5>
-								</div>
-							</div>
-						</div>
-					</a>
-					<a href="article.html" class="article-link">
-						<div class="row">
-							<div class="col-5">
-								<img src="<?php echo get_template_directory_uri() . './images/picture-5.jpg' ?>" alt="...">
-							</div>
-							<div class="col-7">
-								<div class="article-text">
-									<span class="article-category">
-										اخبار
-									</span>
-									<h5 class="article-title">لوريم إيبسوم هو ببساطة نص شكلي ويُستخدم في صناعات المطابع ودور النشر حسوب والأكاديمية، لوريوم أيبسويوم</h5>
-								</div>
-							</div>
-						</div>
-					</a>
+					<?php endwhile; ?>
 				</div>
 			</div>
 		</div>
@@ -319,7 +335,7 @@ get_header();
 				<div class="col-sm-6 col-md-4 col-lg-3">
 					<div class="card mb-4">
 						<div class="card-icons">
-							<img src="<?php echo get_template_directory_uri() . './images/picture-13.jpg'?>" alt="...">
+							<img src="<?php echo get_template_directory_uri() . './images/picture-13.jpg' ?>" alt="...">
 						</div>
 
 						<div class="card-body p-0">
@@ -333,7 +349,7 @@ get_header();
 							</small>
 						</div>
 						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri().'./images/user_img/user_1.jpg'?>" alt="...">
+							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg' ?>" alt="...">
 							<span class="card-text ms-2">أحمد محمد</span>
 						</a>
 					</div>
@@ -356,7 +372,7 @@ get_header();
 							</small>
 						</div>
 						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg'?>" alt="...">
+							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg' ?>" alt="...">
 							<span class="card-text ms-2">أحمد محمد</span>
 						</a>
 					</div>
@@ -379,7 +395,7 @@ get_header();
 							</small>
 						</div>
 						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg'?>" alt="...">
+							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg' ?>" alt="...">
 							<span class="card-text ms-2">أحمد محمد</span>
 						</a>
 					</div>
@@ -402,7 +418,7 @@ get_header();
 							</small>
 						</div>
 						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg'?>" alt="...">
+							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg' ?>" alt="...">
 							<span class="card-text ms-2">أحمد محمد</span>
 						</a>
 					</div>
@@ -425,7 +441,7 @@ get_header();
 							</small>
 						</div>
 						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg'?>" alt="...">
+							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg' ?>" alt="...">
 							<span class="card-text ms-2">أحمد محمد</span>
 						</a>
 					</div>
@@ -448,7 +464,7 @@ get_header();
 							</small>
 						</div>
 						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg'?>" alt="...">
+							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg' ?>" alt="...">
 							<span class="card-text ms-2">أحمد محمد</span>
 						</a>
 					</div>
@@ -471,7 +487,7 @@ get_header();
 							</small>
 						</div>
 						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg'?>" alt="...">
+							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg' ?>" alt="...">
 							<span class="card-text ms-2">أحمد محمد</span>
 						</a>
 					</div>
@@ -494,7 +510,7 @@ get_header();
 							</small>
 						</div>
 						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg'?>" alt="...">
+							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg' ?>" alt="...">
 							<span class="card-text ms-2">أحمد محمد</span>
 						</a>
 					</div>
@@ -572,7 +588,7 @@ get_header();
 					<div class="swiper-slide">
 						<a href="article.html" class="article-link">
 							<div class="slide-img">
-								<img src="<?php echo get_template_directory_uri() . './images/picture-14.jpg' ?>" alt="...">
+								<img src="<?php echo get_template_directory_uri() . './images/picture-8.jpg' ?>" alt="...">
 								<i class="fa-solid fa-play"></i>
 							</div>
 							<div class="slide-text">
