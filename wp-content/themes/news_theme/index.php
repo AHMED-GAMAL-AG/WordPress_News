@@ -111,7 +111,7 @@ get_header();
 							<div class="col-7">
 								<div class="article-text">
 									<span class="article-category ">
-										<?php the_category(' ، ') // the , if their is more than one category
+										<?php the_category('، ') // the , if their is more than one category
 										?>
 									</span>
 									<h5 class="article-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
