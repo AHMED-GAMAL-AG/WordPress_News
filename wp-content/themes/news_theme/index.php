@@ -179,78 +179,46 @@ get_header();
 			<h2 class="section-title">
 				الأكثر قراءة
 			</h2>
-			<div class="card-news">
-				<a href="./article.html">
-					<div class="row">
-						<div class="col-md-5">
-							<img src="<?php echo get_template_directory_uri() . './images/picture-15.jpg' ?>" alt="...">
-						</div>
-						<div class="col-md-7">
-							<div class="card-text">
-								<h4>لوريم ايبسوم دولار سيت أميت كونسيكتيتور أدايبا يسكينج أليايتسيت</h4>
-								<p>
-									لوريم ايبسوم دولار سيت أميت كونسيكتيتور أدايبا يسكينج أليايتسيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا
-									. يوت انيم أد مينيم فينايمكيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات
-									. ديواس أيوتي أريري دولار إن ريبريهينديرأيت فوليوبتاتي فيلايت
-									أيسسي كايلليوم دولار أيو فيجايت نيولا باراياتيور
-									. أيكسسيبتيور ساينت أوككايكات كيوبايداتات نون بروايدينت سيونت ان كيولبا كيو أوفيسيا ديسيريونتموليت انيم أيدي ايست لابوريوم
-								</p>
-								<time datetime="18-12-2022">
-									الأحد، 18-12-2022
-								</time>
+
+			<?php
+			$most_viewed = new WP_Query([
+				'meta_key' => 'post_views_count',
+				'post_per_page' => 3,
+				'order_by' => 'meta_value_num',
+				'order' => 'ASC'
+			]);
+			?>
+
+			<?php
+			while ($most_viewed->have_posts()) : $most_viewed->the_post();
+			?>
+				<div class="card-news">
+					<a href="./article.html">
+						<div class="row">
+							<div class="col-md-5">
+								<a href="<?php the_permalink(); ?>">
+									<?php if (has_post_thumbnail()) {
+										the_post_thumbnail();
+									} else { ?>
+										<img src="<?php bloginfo('template_directory'); ?>/images/default.jpg" alt="<?php the_title(); ?>" />
+									<?php } ?>
+								</a>
+							</div>
+							<div class="col-md-7">
+								<div class="card-text">
+									<a href="<?php the_permalink(); ?>">
+										<h4><?php the_title(); ?></h4>
+									</a>
+
+									<p><?php the_excerpt(); ?></p>
+
+									<time datetime="<?php the_time('d/m/Y'); ?>"><?php the_time('j F Y'); ?></time>
+								</div>
 							</div>
 						</div>
-					</div>
-				</a>
-			</div>
-			<div class="card-news">
-				<a href="./article.html">
-					<div class="row">
-						<div class="col-md-5">
-							<img src="<?php echo get_template_directory_uri() . './images/picture-12.jpg' ?>" alt="...">
-						</div>
-						<div class="col-md-7">
-							<div class="card-text">
-								<h4>لوريم ايبسوم دولار سيت أميت كونسيكتيتور أدايبا يسكينج أليايتسيت</h4>
-								<p>
-									لوريم ايبسوم دولار سيت أميت كونسيكتيتور أدايبا يسكينج أليايتسيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا
-									. يوت انيم أد مينيم فينايمكيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات
-									. ديواس أيوتي أريري دولار إن ريبريهينديرأيت فوليوبتاتي فيلايت
-									أيسسي كايلليوم دولار أيو فيجايت نيولا باراياتيور
-									. أيكسسيبتيور ساينت أوككايكات كيوبايداتات نون بروايدينت سيونت ان كيولبا كيو أوفيسيا ديسيريونتموليت انيم أيدي ايست لابوريوم
-								</p>
-								<time datetime="18-12-2022">
-									الأحد، 18-12-2022
-								</time>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
-			<div class="card-news">
-				<a href="./article.html">
-					<div class="row">
-						<div class="col-md-5">
-							<img src="<?php echo get_template_directory_uri() . './images/picture-12.jpg' ?>" alt="...">
-						</div>
-						<div class="col-md-7">
-							<div class="card-text">
-								<h4>لوريم ايبسوم دولار سيت أميت كونسيكتيتور أدايبا يسكينج أليايتسيت</h4>
-								<p>
-									لوريم ايبسوم دولار سيت أميت كونسيكتيتور أدايبا يسكينج أليايتسيت دو أيوسمود تيمبور أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا
-									. يوت انيم أد مينيم فينايمكيواس نوستريد أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات
-									. ديواس أيوتي أريري دولار إن ريبريهينديرأيت فوليوبتاتي فيلايت
-									أيسسي كايلليوم دولار أيو فيجايت نيولا باراياتيور
-									. أيكسسيبتيور ساينت أوككايكات كيوبايداتات نون بروايدينت سيونت ان كيولبا كيو أوفيسيا ديسيريونتموليت انيم أيدي ايست لابوريوم
-								</p>
-								<time datetime="18-12-2022">
-									الأحد، 18-12-2022
-								</time>
-							</div>
-						</div>
-					</div>
-				</a>
-			</div>
+					</a>
+				</div>
+			<?php endwhile; ?>
 		</div>
 	</section>
 

@@ -335,3 +335,28 @@ function custom_search_form($form)
 	return $form;
 }
 add_filter('get_search_form', 'custom_search_form');
+
+function set_post_views($post_id) // function to count post views
+{
+	$count_key = 'post_views_count';
+	$count = get_post_meta($post_id, $count_key, true); // true means return string not array
+	if ($count == '') { // if the meta data is empty 
+		$count = 0;
+		add_post_meta($post_id, $count_key, '1'); // add meta data with 1 as value when the post is viewed for the first time 
+	} else {
+		$count++; // if already viewed then increment the count by 1
+		update_post_meta($post_id, $count_key, $count);
+	}
+}
+
+
+function get_post_views($post_id) // function to get post views
+{
+	$count_key = 'post_views_count';
+	$count = get_post_meta($post_id, $count_key, true); // true means return string not array
+	if ($count == '') { // if the meta data is empty 
+		return "0 مشاهدة";
+	} else {
+		return $count . " مشاهدة";
+	}
+}

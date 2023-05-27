@@ -9,7 +9,7 @@
  */
 
 get_header();
-// setPostViews(get_the_ID());
+set_post_views(get_the_ID()); // count post views
 ?>
 
 <main>
@@ -26,7 +26,7 @@ get_header();
 					<h2>
 						<?php the_title(); ?>
 						<?php
-						// echo getPostViews(get_the_ID());
+						echo get_post_views(get_the_ID());
 						?>
 					</h2>
 				</div>
@@ -117,14 +117,14 @@ get_header();
 						<div class="most-read">
 							<h2>الأكثر قراءة</h2>
 							<?php
-							$popularpost = new WP_Query(array(
+							$most_viewed = new WP_Query(array(
 								'posts_per_page' =>  3,
 								'meta_key' => 'post_views_count',
 								'orderby' => 'meta_value_num',
 								'order' => 'DESC'
 							));
 							?>
-							<?php while ($popularpost->have_posts()) : $popularpost->the_post(); ?>
+							<?php while ($most_viewed->have_posts()) : $most_viewed->the_post(); ?>
 
 								<div class="most-read-article">
 									<a href="<?php the_permalink(); ?>">
