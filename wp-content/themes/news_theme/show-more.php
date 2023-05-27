@@ -15,10 +15,11 @@ get_header();
             </h2>
             <div class="row">
                 <?php
-                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1;
+                $paged = (get_query_var('paged')) ? get_query_var('paged') : 1; // check if the query has more than one page then show first page : 1
                 $allPostsWPQuery = new WP_Query(array(
                     'post_type' => 'post',
-                    'posts_per_page' => -1, // get all posts
+                    // 'posts_per_page' => -1, // get all posts
+                    'posts_per_page' => 5, // get 5 posts in each page
                     'post_status' => 'publish',
                     'paged' => $paged
                 ));
@@ -47,7 +48,7 @@ get_header();
                     <div class="row mt-5">
                         <div class="pagination">
                             <?php
-                            echo paginate_links(array(
+                            echo paginate_links(array( // show pagination
                                 'total'        => $allPostsWPQuery->max_num_pages,
                             ));
                             ?>
