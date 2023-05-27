@@ -132,113 +132,42 @@ get_header();
 				الأخبار
 			</h2>
 			<div class="row">
-				<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
-					<a href="./article.html" class="article-link">
-						<img src="<?php echo get_template_directory_uri() . './images/picture-4.jpg' ?>" class="news-img" alt="...">
+
+				<?php
+				$query = new WP_Query(array(
+					'post_type' => 'post',
+					'posts_per_page' => 8,
+					'tax_query' => array(
+						array(
+							'taxonomy' => 'front_position',
+							'field' => 'slug',
+							'terms' => 'front-news',
+						)
+					)
+				));
+				while ($query->have_posts()) : $query->the_post(); ?>
+					<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
+						<a href="<?php the_permalink(); ?>">
+							<?php if (has_post_thumbnail()) {
+								the_post_thumbnail();
+							} else { ?>
+								<img src="<?php bloginfo('template_directory'); ?>/images/default.jpg" alt="<?php the_title(); ?>" />
+							<?php } ?>
+						</a>
 						<div class="article-text mt-3">
 							<span class="article-category">
-								اقتصاد
+								<?php the_category('، ') ?>
 							</span>
 							<h5 class="article-title">
-								لوريم إيبسوم هو ببساطة نص شكلي بمعنى أن الغاية هي الشكل وليس المحتوى ويُستخدم في صناعات المطابع ودور النشر
+								<a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
 							</h5>
 						</div>
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
-					<a href="./article.html" class="article-link">
-						<img src="<?php echo get_template_directory_uri() . './images/picture-6.jpg' ?>" alt="...">
-						<div class="article-text mt-3">
-							<span class="article-category">
-								اقتصاد
-							</span>
-							<h5 class="article-title">
-								لوريم إيبسوم هو ببساطة نص شكلي بمعنى أن الغاية هي الشكل وليس المحتوى ويُستخدم في صناعات المطابع ودور النشر
-							</h5>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
-					<a href="./article.html" class="article-link">
-						<img src="<?php echo get_template_directory_uri() . './images/picture-7.jpg' ?>" alt="...">
-						<div class="article-text mt-3">
-							<span class="article-category">
-								اقتصاد
-							</span>
-							<h5 class="article-title">
-								لوريم إيبسوم هو ببساطة نص شكلي بمعنى أن الغاية هي الشكل وليس المحتوى ويُستخدم في صناعات المطابع ودور النشر
-							</h5>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
-					<a href="./article.html" class="article-link">
-						<img src="<?php echo get_template_directory_uri() . './images/picture-3.jpg' ?>" alt="...">
-						<div class="article-text mt-3">
-							<span class="article-category">
-								اقتصاد
-							</span>
-							<h5 class="article-title">
-								لوريم إيبسوم هو ببساطة نص شكلي بمعنى أن الغاية هي الشكل وليس المحتوى ويُستخدم في صناعات المطابع ودور النشر
-							</h5>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
-					<a href="./article.html" class="article-link">
-						<img src="<?php echo get_template_directory_uri() . './images/picture-10.jpg' ?>" alt="...">
-						<div class="article-text mt-3">
-							<span class="article-category">
-								اقتصاد
-							</span>
-							<h5 class="article-title">
-								لوريم إيبسوم هو ببساطة نص شكلي بمعنى أن الغاية هي الشكل وليس المحتوى ويُستخدم في صناعات المطابع ودور النشر
-							</h5>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
-					<a href="./article.html" class="article-link">
-						<img src="<?php echo get_template_directory_uri() . './images/picture-5.jpg' ?>" alt="...">
-						<div class="article-text mt-3">
-							<span class="article-category">
-								اقتصاد
-							</span>
-							<h5 class="article-title">
-								لوريم إيبسوم هو ببساطة نص شكلي بمعنى أن الغاية هي الشكل وليس المحتوى ويُستخدم في صناعات المطابع ودور النشر
-							</h5>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
-					<a href="./article.html" class="article-link">
-						<img src="<?php echo get_template_directory_uri() . './images/picture-15.jpg' ?>" alt="...">
-						<div class="article-text mt-3">
-							<span class="article-category">
-								اقتصاد
-							</span>
-							<h5 class="article-title">
-								لوريم إيبسوم هو ببساطة نص شكلي بمعنى أن الغاية هي الشكل وليس المحتوى ويُستخدم في صناعات المطابع ودور النشر
-							</h5>
-						</div>
-					</a>
-				</div>
-				<div class="col-lg-3 col-md-4 col-sm-6 mt-4">
-					<a href="./article.html" class="article-link">
-						<img src="<?php echo get_template_directory_uri() . './images/picture-13.jpg' ?>" alt="...">
-						<div class="article-text mt-3">
-							<span class="article-category">
-								اقتصاد
-							</span>
-							<h5 class="article-title">
-								لوريم إيبسوم هو ببساطة نص شكلي بمعنى أن الغاية هي الشكل وليس المحتوى ويُستخدم في صناعات المطابع ودور النشر
-							</h5>
-						</div>
-					</a>
-				</div>
+					</div>
+				<?php endwhile; ?>
+
 			</div>
 			<div class="text-center mt-5">
-				<a href="#" class="py-1 button">
+				<a href=" <?php echo site_url('/show-more')  ?> " class="py-1 button">
 					المزيد
 				</a>
 			</div>
