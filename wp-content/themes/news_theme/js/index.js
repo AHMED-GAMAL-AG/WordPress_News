@@ -27,7 +27,3 @@ mql.onchange = (e) => {
   handleOrientationChange(e);
 }
 
-
-
-
-document.getElementById("year").innerHTML = new Date().getFullYear()

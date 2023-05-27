@@ -360,3 +360,44 @@ function get_post_views($post_id) // function to get post views
 		return $count . " مشاهدة";
 	}
 }
+
+
+function init_widgets($id)
+{
+	register_sidebar(array(
+		'name'		=> 'من نحن',
+		'id'		=> 'who-are-we',
+		'before_widget'	=> '',
+		'after_widget'	=> '',
+		'before_title'	=>	'<h4 class="footer-title">',
+		'after_title'	=>	'</h4>'
+	));
+
+	register_sidebar(array(
+		'name'		=> 'تواصل معنا',
+		'id'		=> 'connect',
+		'before_widget'	=> '',
+		'after_widget'	=> '',
+		'before_title'	=>	' <h4 class="footer-title"',
+		'after_title'	=>	'</h4>'
+	));
+
+	register_sidebar(array(
+		'name'		=> 'وسائل التواصل',
+		'id'		=> 'communication',
+		'before_widget'	=> '',
+		'after_widget'	=> '',
+		'before_title'	=>	' <h4 class="footer-title"',
+		'after_title'	=>	'</h4>'
+	));
+
+	register_sidebar(array(
+		'name'		=> 'تابعنا على',
+		'id'		=> 'follow-us-on',
+		'before_widget'	=> '',
+		'after_widget'	=> '',
+		'before_title'	=>	' <h4 class="footer-title"',
+		'after_title'	=>	'</h4>'
+	));
+}
+add_action('widgets_init', 'init_widgets');
