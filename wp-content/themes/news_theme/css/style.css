@@ -710,6 +710,13 @@ span > a {
 
 }
 
+@media(max-width: 574px) { 
+  .news {
+      padding-top: 20px !important;
+  }
+
+}
+
 .footer-line {
   margin: 3rem 0 !important;
 }
@@ -720,4 +727,35 @@ span > a {
 
 .must-log-in > a {
   color: red;
+}
+
+/* the navbar */
+ul.navbar-nav li {
+  padding-right: 30px;
+}
+
+ul.navbar-nav li a {
+  color:#000 !important;
+  font-size: 20px;
+}
+
+ul.navbar-nav li:hover a {
+  color:#B80000 !important;
+}
+
+.page-numbers {
+  display: inline-block;
+  padding: 10px 15px;
+  margin: 0 2px 0 0;
+  border: 1px solid #eee;
+  line-height: 1;
+  text-decoration: none;
+  border-radius: 2px;
+  font-weight: 600;
+  color:#B80000;
+}
+
+.page-numbers.current, a.page-numbers:active {
+  background: #B80000;
+  color:#fff;
 }

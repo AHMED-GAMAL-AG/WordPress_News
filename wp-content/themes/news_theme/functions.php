@@ -296,19 +296,30 @@ function wp_news_insert_taxonomy_terms_front_position()
 }
 add_action('init', 'wp_news_insert_taxonomy_terms_front_position');
 
- // إضافة موقع عرض افتراضي في حال لم يحدد موقع عرض للخبر
- function mfields_set_default_object_terms( $post_id, $post ) {
-    if ( 'publish' === $post->post_status ) {
-        $defaults = array(
-            'front_position' => array( 'front-news' )
-            );
-        $taxonomies = get_object_taxonomies( $post->post_type );
-        foreach ( (array) $taxonomies as $taxonomy ) {
-            $terms = wp_get_post_terms( $post_id, $taxonomy );
-            if ( empty( $terms ) && array_key_exists( $taxonomy, $defaults ) ) {
-                wp_set_object_terms( $post_id, $defaults[$taxonomy], $taxonomy );
-            }
-        }
-    }
+// إضافة موقع عرض افتراضي في حال لم يحدد موقع عرض للخبر
+function mfields_set_default_object_terms($post_id, $post)
+{
+	if ('publish' === $post->post_status) {
+		$defaults = array(
+			'front_position' => array('front-news')
+		);
+		$taxonomies = get_object_taxonomies($post->post_type);
+		foreach ((array) $taxonomies as $taxonomy) {
+			$terms = wp_get_post_terms($post_id, $taxonomy);
+			if (empty($terms) && array_key_exists($taxonomy, $defaults)) {
+				wp_set_object_terms($post_id, $defaults[$taxonomy], $taxonomy);
+			}
+		}
+	}
 }
-add_action( 'save_post', 'mfields_set_default_object_terms', 10, 2 );
+add_action('save_post', 'mfields_set_default_object_terms', 10, 2);
+
+function my_custom_menu()
+{
+	register_nav_menus(
+		[
+			'my-custom-menu' => __('My Custom Menu'),
+		]
+	);
+}
+add_action('init', 'my_custom_menu');

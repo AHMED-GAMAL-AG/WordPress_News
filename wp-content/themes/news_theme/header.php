@@ -15,30 +15,36 @@
 
 <body>
 	<header>
-		<nav class="navbar navbar-expand-lg fixed-top">
+		<nav class="navbar navbar-expand-lg fixed-top" <?php if ( is_admin_bar_showing() ) {?> style="position: absolute; top: 32px;" <?php } ?>>
 			<div class="container">
 				<a class="navbar-brand" href="<?php echo get_home_url() ?>">أخباري</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
 				<div class="collapse navbar-collapse" id="navbarSupportedContent">
-					<ul class="navbar-nav me-auto mb-2 mb-lg-0">
-						<li class="nav-item">
-							<a class="nav-link active" aria-current="page" href="#">أخبار</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">تكنولوجيا</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">اقتصاد</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">رياضة</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" href="#">حاسوب</a>
-						</li>
-					</ul>
+					<!-- <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+
+						<?php
+						$categories = get_categories();
+						foreach ($categories as $category) { ?>
+							<li class="nav-item">
+								<?php echo '<a class="nav-link" href="' . get_category_link($category->term_id) . '">' . $category->name . '</a>'; ?>
+							</li>
+						<?php } ?>
+
+					</ul> -->
+
+
+					<?php
+					wp_nav_menu( // show menu in header instead of hard coded html
+						array(
+							'theme_location' => 'my-custom-menu', // 
+							'container' => '', // default div
+							'menu_class' => 'navbar-nav me-auto mb-2 mb-lg-0',
+						)
+					);
+					?>
+
 					<div class="login">
 						<i class="fa-solid fa-user"></i>
 						<div class="login-container">
