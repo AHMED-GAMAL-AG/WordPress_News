@@ -36,7 +36,7 @@ if (post_password_required()) {
 				array(
 					'style'      => 'ol',
 					'short_ping' => true,
-					// 'callback' => 'better_comments'
+					'callback' => 'better_comments'
 				)
 			);
 			?>
@@ -48,7 +48,7 @@ if (post_password_required()) {
 		// If comments are closed and there are comments, let's leave a little note, shall we?
 		if (!comments_open()) :
 		?>
-			<p class="no-comments"><?php esc_html_e('Comments are closed.', 'news-hsoub'); ?></p>
+			<p class="no-comments"><?php esc_html_e('Comments are closed.', 'news-app'); ?></p>
 	<?php
 		endif;
 

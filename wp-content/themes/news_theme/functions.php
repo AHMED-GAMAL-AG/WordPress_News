@@ -402,5 +402,6 @@ function init_widgets($id)
 }
 add_action('widgets_init', 'init_widgets');
 
-
 add_filter('comment_form_logged_in', '__return_empty_string'); // to remove the text "Logged in as" from the comment form
+
+require get_template_directory() . '/includes/comments-helper.php';

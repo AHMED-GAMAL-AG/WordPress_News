@@ -1,9 +1,11 @@
 .article-header {
   margin-top: 100px;
 }
+
 .article-header .header-category {
   font-size: 20px;
 }
+
 .article-header .header-title {
   margin: 30px auto 50px;
 }
@@ -11,6 +13,7 @@
 .article-main .article-subtitle {
   margin: 10px 0 30px;
 }
+
 .article-main .article-datetime {
   font-size: 20px;
   padding: 10px 0;
@@ -18,9 +21,11 @@
   margin-bottom: 40px;
   position: relative;
 }
+
 .article-main .article-datetime time {
   margin-right: 25px;
 }
+
 .article-main .article-datetime time::before {
   content: "";
   position: absolute;
@@ -30,18 +35,23 @@
   width: 10px;
   background-color: #B80000;
 }
+
 .article-main .article-body p {
   font-size: 22px;
 }
+
 .article-main .article-body h3 {
   font-size: 30px;
 }
+
 .article-main .article-body .suggested-stories {
   margin-bottom: 50px;
 }
+
 .article-main .article-body .suggested-stories .story-card .col-sm-8 {
   position: relative;
 }
+
 .article-main .article-body .suggested-stories .story-card .col-sm-8 p {
   position: absolute;
   top: 50%;
@@ -49,10 +59,12 @@
   font-weight: bold;
   transform: translateY(-50%);
 }
+
 .article-main .article-body .suggested-stories .story-card:hover p {
   text-decoration: underline;
   color: #000000;
 }
+
 .article-main .article-body .keyword {
   font-size: 22px;
   padding: 10px 25px;
@@ -62,6 +74,7 @@
 .comments {
   margin-bottom: 25px;
 }
+
 .comments .comment-textarea {
   display: block;
   width: 100%;
@@ -69,12 +82,15 @@
   border: 1px solid #B1AEAE;
   border-radius: 5px;
 }
+
 .comments .comment-card {
   margin-top: 25px;
 }
+
 .comments .comment-card .user-photo img {
   clip-path: circle();
 }
+
 .comments .comment-card .comment-text {
   padding: 20px;
   background-color: #F0F0F0;
@@ -83,6 +99,7 @@
   margin-top: 15px;
   margin-right: -15px;
 }
+
 .comments .comment-card .comment-text::before {
   content: "";
   position: absolute;
@@ -93,14 +110,17 @@
   transform: rotate(45deg);
   background-color: #F0F0F0;
 }
+
 .comments .comment-card .comment-text span {
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 25px;
 }
+
 .comments .comment-card .comment-text p {
   font-size: 18px;
 }
+
 .comments .button {
   background-color: #B80000;
   color: #fff;
@@ -112,6 +132,7 @@
   font-size: 22px;
   margin-top: 25px;
 }
+
 .comments .button:hover {
   background-color: #fff;
   color: #B80000;
@@ -128,6 +149,7 @@
   margin-top: 25px;
   font-size: 22px;
 }
+
 .related-articles .button:hover {
   background-color: #fff;
   color: #B80000;
@@ -137,9 +159,11 @@
   position: relative;
   margin-top: 25px;
 }
+
 .most-read-article:hover h4 {
   text-decoration: underline;
 }
+
 .most-read-text {
   position: absolute;
   bottom: 0;
@@ -148,6 +172,7 @@
   background-color: rgba(0, 0, 0, 0.5);
   color: #fff;
 }
+
 .most-read-text h4.article-title {
   font-size: 22px;
   display: block;
@@ -159,53 +184,68 @@
     font-size: 16px;
   }
 }
+
 @media (max-width: 768px) {
   .article-header .header-category {
     font-size: 16px;
   }
+
   .article-header .header-title h2 {
     font-size: 24px;
   }
+
   .article-main .article-datetime {
     padding: 5px;
   }
+
   .article-main .article-datetime time {
     font-size: 16px;
   }
+
   .article-main .article-body p {
     font-size: 18px;
   }
+
   .article-main .article-body h3 {
     font-size: 24px;
   }
+
   .article-main .article-body .keyword {
     font-size: 18px;
     padding: 8px 20px;
   }
+
   .comments .comment-card .comment-text span {
     font-size: 16px;
   }
+
   .comments .comment-card .comment-text p {
     font-size: 14px;
   }
+
   .related-articles .col-sm-4 {
     margin-bottom: 20px;
   }
+
   /* .most-read {
     display: none;
   } */
 }
+
 @media (max-width: 575px) {
   .article-main .suggested-stories {
     margin-bottom: 20px;
   }
+
   .article-main .suggested-stories .story-card {
     margin-top: 20px !important;
   }
+
   .article-main .article-body iframe {
     height: 215px;
     width: 390px;
   }
+
   .article-main .article-body .suggested-stories .story-card .col-sm-8 p {
     position: relative;
   }
@@ -215,5 +255,9 @@
 
 ul,
 ol {
-	 margin: 0 0 0 0;
+  margin: 0 0 0 0;
+}
+
+.user-photo>img {
+  width: 75%;
 }

@@ -759,3 +759,7 @@ ul.navbar-nav li:hover a {
   background: #B80000;
   color:#fff;
 }
+
+.comments-area .comment-respond h3 {
+  margin-top: 2rem;
+}
