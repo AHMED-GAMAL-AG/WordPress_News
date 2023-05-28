@@ -1,7 +1,7 @@
 <?php
 
 /*
-Template Name: Show More
+Template Name: More Posts
 */
 
 get_header();

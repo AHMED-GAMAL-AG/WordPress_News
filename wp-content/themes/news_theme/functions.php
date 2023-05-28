@@ -470,3 +470,10 @@ function remove_admin_bar(){ // only show the admin bar to the admin
 add_action('after_setup_theme', 'remove_admin_bar');
 
 require get_template_directory() . '/includes/opinion-cpt.php'; // cpt is custom post type
+
+function custom_pagination($query){
+	if($query->is_archive('opinion')){ // if the user is on the opinion archive page
+		set_query_var('posts_per_page', 3); // show 3 posts per page
+	}
+}
+add_action('pre_get_posts', 'custom_pagination');

@@ -269,7 +269,7 @@ get_header();
 				<?php endwhile; ?>
 			</div>
 			<div class="text-center mt-5">
-				<a href="#" class="py-1 button">
+				<a href=" <?php echo get_post_type_archive_link('opinion') ?> " class="py-1 button">
 					المزيد
 				</a>
 			</div>
