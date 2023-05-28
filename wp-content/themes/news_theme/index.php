@@ -229,189 +229,44 @@ get_header();
 			</h2>
 
 			<div class="row mt-4">
-				<div class="col-sm-6 col-md-4 col-lg-3">
-					<div class="card mb-4">
-						<div class="card-icons">
-							<img src="<?php echo get_template_directory_uri() . './images/picture-13.jpg' ?>" alt="...">
-						</div>
+				<?php
+				$args = array(
+					'post_type' => 'opinion',
+					'post_status' => 'publish',
+					'posts_per_page' => 8,
+				);
 
-						<div class="card-body p-0">
-							<p class="card-title p-2"><a class="text-dark" href="#">لوريم ايبسوم دولار سيت أميت كونسيكتيتور</p>
-						</div>
+				$loop = new WP_Query($args);
+				while ($loop->have_posts()) : $loop->the_post(); ?>
+					<div class="col-sm-6 col-md-4 col-lg-3">
+						<div class="card mb-4">
+							<div class="card-icons">
+								<a href="<?php the_permalink(); ?>">
+									<?php if (has_post_thumbnail()) {
+										the_post_thumbnail();
+									} else { ?>
+										<img src="<?php bloginfo('template_directory'); ?>/images/default.jpg" alt="<?php the_title(); ?>" />
+									<?php } ?>
+								</a>
+							</div>
 
-						<div class="card-footer p-2">
-							<small class="text-muted">
-								<span class="me-2"><i class="fas fa-film me-1"></i> <span>10 مشاهدة</span></span>
-								<i class="fas fa-clock me-1"></i> <time datetime="31/10/2023">31/10/2023</time>
-							</small>
+							<div class="card-body p-0">
+								<p class="card-title p-2"><a class="text-dark" href="<?php the_permalink(); ?>"><?php the_title(); ?></p>
+							</div>
+
+							<div class="card-footer p-2">
+								<small class="text-muted">
+									<span class="me-2"><i class="fas fa-film me-1"></i> <span><?php echo get_post_views(get_the_ID()); ?> مشاهدة</span></span>
+									<i class="fas fa-clock me-1"></i> <time datetime="<?php the_time('d/m/Y'); ?>"><?php the_time('j F Y'); ?></time>
+								</small>
+							</div>
+							<a href="#" class="p-2">
+								<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php print get_avatar_url(get_the_author_meta('ID')); ?>" alt="...">
+								<span class="card-text ms-2"><?php the_author(); ?></span>
+							</a>
 						</div>
-						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg' ?>" alt="...">
-							<span class="card-text ms-2">أحمد محمد</span>
-						</a>
 					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3">
-					<div class="card mb-4">
-						<div class="card-icons">
-							<img src="<?php echo get_template_directory_uri() . './images/picture-12.jpg' ?>" alt="...">
-						</div>
-
-						<div class="card-body p-0">
-							<p class="card-title p-2"><a class="text-dark" href="#">لوريم ايبسوم دولار سيت أميت كونسيكتيتور</p>
-						</div>
-
-						<div class="card-footer p-2">
-							<small class="text-muted">
-								<span class="me-2"><i class="fas fa-film me-1"></i> <span>10 مشاهدة</span></span>
-								<i class="fas fa-clock me-1"></i> <time datetime="31/10/2023">31/10/2023</time>
-							</small>
-						</div>
-						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg' ?>" alt="...">
-							<span class="card-text ms-2">أحمد محمد</span>
-						</a>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3">
-					<div class="card mb-4">
-						<div class="card-icons">
-							<img src="<?php echo get_template_directory_uri() . './images/picture-3.jpg' ?>" alt="...">
-						</div>
-
-						<div class="card-body p-0">
-							<p class="card-title p-2"><a class="text-dark" href="#">لوريم ايبسوم دولار سيت أميت كونسيكتيتور</p>
-						</div>
-
-						<div class="card-footer p-2">
-							<small class="text-muted">
-								<span class="me-2"><i class="fas fa-film me-1"></i> <span>10 مشاهدة</span></span>
-								<i class="fas fa-clock me-1"></i> <time datetime="31/10/2023">31/10/2023</time>
-							</small>
-						</div>
-						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg' ?>" alt="...">
-							<span class="card-text ms-2">أحمد محمد</span>
-						</a>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3">
-					<div class="card mb-4">
-						<div class="card-icons">
-							<img src="<?php echo get_template_directory_uri() . './images/picture-10.jpg' ?>" alt="...">
-						</div>
-
-						<div class="card-body p-0">
-							<p class="card-title p-2"><a class="text-dark" href="#">لوريم ايبسوم دولار سيت أميت كونسيكتيتور</p>
-						</div>
-
-						<div class="card-footer p-2">
-							<small class="text-muted">
-								<span class="me-2"><i class="fas fa-film me-1"></i> <span>10 مشاهدة</span></span>
-								<i class="fas fa-clock me-1"></i> <time datetime="31/10/2023">31/10/2023</time>
-							</small>
-						</div>
-						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg' ?>" alt="...">
-							<span class="card-text ms-2">أحمد محمد</span>
-						</a>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3">
-					<div class="card mb-4">
-						<div class="card-icons">
-							<img src="<?php echo get_template_directory_uri() . './images/picture-6.jpg' ?>" alt="...">
-						</div>
-
-						<div class="card-body p-0">
-							<p class="card-title p-2"><a class="text-dark" href="#">لوريم ايبسوم دولار سيت أميت كونسيكتيتور</p>
-						</div>
-
-						<div class="card-footer p-2">
-							<small class="text-muted">
-								<span class="me-2"><i class="fas fa-film me-1"></i> <span>10 مشاهدة</span></span>
-								<i class="fas fa-clock me-1"></i> <time datetime="31/10/2023">31/10/2023</time>
-							</small>
-						</div>
-						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg' ?>" alt="...">
-							<span class="card-text ms-2">أحمد محمد</span>
-						</a>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3">
-					<div class="card mb-4">
-						<div class="card-icons">
-							<img src="<?php echo get_template_directory_uri() . './images/picture-4.jpg' ?>" alt="...">
-						</div>
-
-						<div class="card-body p-0">
-							<p class="card-title p-2"><a class="text-dark" href="#">لوريم ايبسوم دولار سيت أميت كونسيكتيتور</p>
-						</div>
-
-						<div class="card-footer p-2">
-							<small class="text-muted">
-								<span class="me-2"><i class="fas fa-film me-1"></i> <span>10 مشاهدة</span></span>
-								<i class="fas fa-clock me-1"></i> <time datetime="31/10/2023">31/10/2023</time>
-							</small>
-						</div>
-						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg' ?>" alt="...">
-							<span class="card-text ms-2">أحمد محمد</span>
-						</a>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3">
-					<div class="card mb-4">
-						<div class="card-icons">
-							<img src="<?php echo get_template_directory_uri() . './images/picture-7.jpg' ?>" alt="...">
-						</div>
-
-						<div class="card-body p-0">
-							<p class="card-title p-2"><a class="text-dark" href="#">لوريم ايبسوم دولار سيت أميت كونسيكتيتور</p>
-						</div>
-
-						<div class="card-footer p-2">
-							<small class="text-muted">
-								<span class="me-2"><i class="fas fa-film me-1"></i> <span>10 مشاهدة</span></span>
-								<i class="fas fa-clock me-1"></i> <time datetime="31/10/2023">31/10/2023</time>
-							</small>
-						</div>
-						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg' ?>" alt="...">
-							<span class="card-text ms-2">أحمد محمد</span>
-						</a>
-					</div>
-				</div>
-
-				<div class="col-sm-6 col-md-4 col-lg-3">
-					<div class="card mb-4">
-						<div class="card-icons">
-							<img src="<?php echo get_template_directory_uri() . './images/picture-6.jpg' ?>" alt="...">
-						</div>
-
-						<div class="card-body p-0">
-							<p class="card-title p-2"><a class="text-dark" href="#">لوريم ايبسوم دولار سيت أميت كونسيكتيتور</p>
-						</div>
-
-						<div class="card-footer p-2">
-							<small class="text-muted">
-								<span class="me-2"><i class="fas fa-film me-1"></i> <span>10 مشاهدة</span></span>
-								<i class="fas fa-clock me-1"></i> <time datetime="31/10/2023">31/10/2023</time>
-							</small>
-						</div>
-						<a href="#" class="p-2">
-							<img class="rounded-circle" style="width: 50px;height:50px; margin-top:5px" src="<?php echo get_template_directory_uri() . './images/user_img/user_1.jpg' ?>" alt="...">
-							<span class="card-text ms-2">أحمد محمد</span>
-						</a>
-					</div>
-				</div>
+				<?php endwhile; ?>
 			</div>
 			<div class="text-center mt-5">
 				<a href="#" class="py-1 button">

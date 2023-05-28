@@ -468,3 +468,5 @@ function remove_admin_bar(){ // only show the admin bar to the admin
 	}
 }
 add_action('after_setup_theme', 'remove_admin_bar');
+
+require get_template_directory() . '/includes/opinion-cpt.php'; // cpt is custom post type
