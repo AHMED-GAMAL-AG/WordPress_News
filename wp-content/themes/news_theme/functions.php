@@ -461,3 +461,10 @@ function auto_login_new_user($user_id) // auto login after registration and redi
 	exit;
 }
 add_action('user_register', 'auto_login_new_user');
+
+function remove_admin_bar(){ // only show the admin bar to the admin
+	if (!current_user_can('administrator') && !is_admin()) {
+		show_admin_bar(false);
+	}
+}
+add_action('after_setup_theme', 'remove_admin_bar');

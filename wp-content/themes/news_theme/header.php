@@ -46,12 +46,27 @@
 					?>
 
 					<div class="login">
-						<i class="fa-solid fa-user"></i>
-						<div class="login-container">
-							<a href="./login.html"style="font-size: .875rem !important;" class="btn button mt-2 w-100">تسجيل الدخول</a>
+						<?php
+						if (is_user_logged_in()) { // check if user is logged in show user avatar and logout button
+							global $current_user;
+						?>
+							<img src="<?php echo get_avatar_url($current_user->user_email); ?>" alt="" class="rounded-circle w-50 h-50">
 
-							<a href=" <?php echo esc_url(wp_registration_url( home_url() )) ?> " style="font-size: .875rem !important;" class="btn button mt-2 w-100">حساب جديد</a>
-						</div>
+							<div class="login-container mt-3" style="height: 150px; margin-right: 10px;">
+								<p><?php echo 'مرحبًا ' . $current_user->display_name; ?></p>
+								<a href="<?php echo esc_url(admin_url('profile.php')); ?>" class="btn button mt-2 w-100" style="font-size: .875rem !important;">الملف الشخصي</a>
+								<a href="<?php echo esc_url(wp_logout_url(home_url())); ?>" class="btn button w-100 mt-2" style="font-size: .875rem !important;">تسجيل خروج</a>
+							</div>
+						<?php
+						} else { // show login and register button
+						?>
+							<i class="fa-solid fa-user"></i>
+							<div class="login-container">
+								<a href="<?php echo esc_url(wp_login_url(home_url())); ?>" class="btn button mt-2 w-100" style="font-size: .875rem !important;">تسجيل الدخول</a>
+
+								<a href="<?php echo esc_url(wp_registration_url(home_url())); ?>" class="btn button mt-2 w-100" style="font-size: .875rem !important;">حساب جديد</a>
+							</div>
+						<?php } ?>
 					</div>
 					<?php get_search_form(); ?>
 				</div>
