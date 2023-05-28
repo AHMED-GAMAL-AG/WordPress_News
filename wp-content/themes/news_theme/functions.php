@@ -142,8 +142,8 @@ add_action('widgets_init', 'news_app_widgets_init');
  * Enqueue scripts and styles.
  */
 function news_app_scripts()
-{	
-	wp_enqueue_script('JQuery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js' , array(), 1.0, true);
+{
+	wp_enqueue_script('JQuery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js', array(), 1.0, true);
 	wp_enqueue_style('news_app-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_style_add_data('news_app-style', 'rtl', 'replace');
 	wp_enqueue_script('news_app-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
@@ -405,3 +405,59 @@ add_action('widgets_init', 'init_widgets');
 add_filter('comment_form_logged_in', '__return_empty_string'); // to remove the text "Logged in as" from the comment form
 
 require get_template_directory() . '/includes/comments-helper.php';
+
+add_action('register_form', function () { // to add password field in login form 
+?>
+	<div class="user-pass1-wrap">
+		<p>
+			<label for="pass1"><?php _e('New password'); ?></label>
+		</p>
+
+		<div class="wp-pwd">
+			<input type="password" name="pass1" id="pass1" class="input password-input" size="24" value="" autocomplete="new-password" spellcheck="false" data-reveal="1" data-pw="<?php echo esc_attr(wp_generate_password(16)); ?>" aria-describedby="pass-strength-result" />
+
+			<button type="button" class="button button-secondary wp-hide-pw hide-if-no-js" data-toggle="0" aria-label="<?php esc_attr_e('Hide password'); ?>">
+				<span class="dashicons dashicons-hidden" aria-hidden="true"></span>
+			</button>
+			<div id="pass-strength-result" class="hide-if-no-js" aria-live="polite"><?php _e('Strength indicator'); ?></div>
+		</div>
+		<div class="pw-weak">
+			<input type="checkbox" name="pw_weak" id="pw-weak" class="pw-checkbox" />
+			<label for="pw-weak"><?php _e('Confirm use of weak password'); ?></label>
+		</div>
+	</div>
+
+	<p class="description indicator-hint"><?php echo wp_get_password_hint(); ?></p>
+<?php
+
+});
+
+
+function is_on_registration_page() // check if the user is on registration page
+{
+	return $GLOBALS['pagenow'] === 'wp-login.php' && isset($_REQUEST['action']) && $_REQUEST['action'] === 'register';
+}
+
+add_action('login_enqueue_scripts', function () { // to activate the javascript file on the registration page only
+	if (is_on_registration_page() && !wp_script_is('user-profile')) {  // if the user is on registration page and the javascript file for user-profile is not activated
+		wp_enqueue_script('user-profile'); // activate the script
+	}
+});
+
+add_filter('random_password', function ($password) { // use the password field to insert the password in the database
+	if (is_on_registration_page() && !empty($_POST['pass1'])) { // if the user is on registration page and the password field is not empty
+		$password = $_POST['pass1']; // set the password to the value of the password field
+	}
+
+	return $password; 
+});
+
+
+function auto_login_new_user($user_id) // auto login after registration and redirect to the home page
+{
+	wp_set_current_user($user_id); // automatically login the user
+	wp_set_auth_cookie($user_id); 
+	wp_redirect(home_url());
+	exit;
+}
+add_action('user_register', 'auto_login_new_user');

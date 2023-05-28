@@ -15,7 +15,7 @@
 
 <body>
 	<header>
-		<nav class="navbar navbar-expand-lg fixed-top" <?php if ( is_admin_bar_showing() ) {?> style="position: absolute; top: 32px;" <?php } ?>>
+		<nav class="navbar navbar-expand-lg fixed-top" <?php if (is_admin_bar_showing()) { ?> style="position: absolute; top: 32px;" <?php } ?>>
 			<div class="container">
 				<a class="navbar-brand" href="<?php echo get_home_url() ?>">أخباري</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -48,11 +48,10 @@
 					<div class="login">
 						<i class="fa-solid fa-user"></i>
 						<div class="login-container">
-							<a href="./login.html" class="button">تسجيل الدخول</a>
+							<a href="./login.html"style="font-size: .875rem !important;" class="btn button mt-2 w-100">تسجيل الدخول</a>
+
+							<a href=" <?php echo esc_url(wp_registration_url( home_url() )) ?> " style="font-size: .875rem !important;" class="btn button mt-2 w-100">حساب جديد</a>
 						</div>
-					</div>
-					<div class="login-button">
-						<a href="login.html" class="button">تسجيل الدخول</a>
 					</div>
 					<?php get_search_form(); ?>
 				</div>
