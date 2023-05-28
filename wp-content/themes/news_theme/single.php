@@ -5,7 +5,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/#single-post
  *
- * @package News-Hsoub
+ * @package news_app
  */
 
 get_header();
@@ -59,19 +59,20 @@ set_post_views(get_the_ID()); // count post views
 								التعليقات
 							</h2>
 
+							<!-- get comments template -->
 							<?php comments_template(); ?>
 
 							<hr>
 						</section>
 
-						<section class="related-articles">
+						<section class="related-articles mt-4">
 							<h2 class="section-title">
 								أخبار ذات صلة
 							</h2>
 							<div class="row">
 								<?php
 								$id = get_the_id(); //id of current post
-								$terms = get_the_terms($id, 'category'); 
+								$terms = get_the_terms($id, 'category');
 								//print_r( $terms );
 								foreach ($terms as $term) {
 									$cat_id =  $term->term_taxonomy_id; // category id of current post

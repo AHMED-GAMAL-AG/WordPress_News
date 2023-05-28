@@ -142,10 +142,10 @@ add_action('widgets_init', 'news_app_widgets_init');
  * Enqueue scripts and styles.
  */
 function news_app_scripts()
-{
+{	
+	wp_enqueue_script('JQuery', 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.0/jquery.min.js' , array(), 1.0, true);
 	wp_enqueue_style('news_app-style', get_stylesheet_uri(), array(), _S_VERSION);
 	wp_style_add_data('news_app-style', 'rtl', 'replace');
-
 	wp_enqueue_script('news_app-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true);
 
 	if (is_singular() && comments_open() && get_option('thread_comments')) {
@@ -401,3 +401,6 @@ function init_widgets($id)
 	));
 }
 add_action('widgets_init', 'init_widgets');
+
+
+add_filter('comment_form_logged_in', '__return_empty_string'); // to remove the text "Logged in as" from the comment form

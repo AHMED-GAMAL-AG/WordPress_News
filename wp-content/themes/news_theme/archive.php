@@ -5,7 +5,7 @@
  *
  * @link https://developer.wordpress.org/themes/basics/template-hierarchy/
  *
- * @package News-Hsoub
+ * @package news_app
  */
 
 get_header();

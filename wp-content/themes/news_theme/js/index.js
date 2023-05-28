@@ -27,3 +27,9 @@ mql.onchange = (e) => {
   handleOrientationChange(e);
 }
 
+$('#commentform').submit(function() { // show error message if comment is empty
+  if ($("#comment").val() === "") {
+      $(".error-message").fadeIn();
+      return false;
+  }
+});

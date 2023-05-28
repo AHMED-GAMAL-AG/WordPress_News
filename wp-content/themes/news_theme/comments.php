@@ -1,4 +1,5 @@
 <?php
+
 /**
  * The template for displaying comments
  *
@@ -15,7 +16,7 @@
  * the visitor has not yet entered the password we will
  * return early without loading the comments.
  */
-if ( post_password_required() ) {
+if (post_password_required()) {
 	return;
 }
 ?>
@@ -24,27 +25,8 @@ if ( post_password_required() ) {
 
 	<?php
 	// You can start editing here -- including this comment!
-	if ( have_comments() ) :
-		?>
-		<h2 class="comments-title">
-			<?php
-			$news_app_comment_count = get_comments_number();
-			if ( '1' === $news_app_comment_count ) {
-				printf(
-					/* translators: 1: title. */
-					esc_html__( 'One thought on &ldquo;%1$s&rdquo;', 'news_app' ),
-					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
-				);
-			} else {
-				printf( 
-					/* translators: 1: comment count number, 2: title. */
-					esc_html( _nx( '%1$s thought on &ldquo;%2$s&rdquo;', '%1$s thoughts on &ldquo;%2$s&rdquo;', $news_app_comment_count, 'comments title', 'news_app' ) ),
-					number_format_i18n( $news_app_comment_count ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-					'<span>' . wp_kses_post( get_the_title() ) . '</span>'
-				);
-			}
-			?>
-		</h2><!-- .comments-title -->
+	if (have_comments()) :
+	?>
 
 		<?php the_comments_navigation(); ?>
 
@@ -54,6 +36,7 @@ if ( post_password_required() ) {
 				array(
 					'style'      => 'ol',
 					'short_ping' => true,
+					// 'callback' => 'better_comments'
 				)
 			);
 			?>
@@ -63,15 +46,25 @@ if ( post_password_required() ) {
 		the_comments_navigation();
 
 		// If comments are closed and there are comments, let's leave a little note, shall we?
-		if ( ! comments_open() ) :
-			?>
-			<p class="no-comments"><?php esc_html_e( 'Comments are closed.', 'news_app' ); ?></p>
-			<?php
+		if (!comments_open()) :
+		?>
+			<p class="no-comments"><?php esc_html_e('Comments are closed.', 'news-hsoub'); ?></p>
+	<?php
 		endif;
 
 	endif; // Check for have_comments().
 
-	comment_form();
+
+	$args = array(
+		'comment_field' => '<p class="comment-form-comment">' .
+			'<textarea name="comment" id="comment" class="comment-textarea mt-5" placeholder="اكتب تعليقًا هنا ..." rows="3" style="padding:10px;"></textarea>' .
+			'<div class="error-message" style="display:none; color:red">الرجاء كتابة تعليق لنشره</div>' .
+			'</p>',
+		'title_reply' => '',
+		'label_submit' => 'نشر',
+	);
+
+	comment_form($args);
 	?>
 
 </div><!-- #comments -->
