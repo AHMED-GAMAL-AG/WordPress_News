@@ -330,72 +330,98 @@ get_header();
 			<h2 class="section-title mb-4">
 				أحدث الأخبار
 			</h2>
-			<div class="row">
-				<div class="col-md-6">
-					<a href="article.html" class="article-link">
-						<img src="<?php echo get_template_directory_uri() . './images/picture-17.jpg' ?>" alt="...">
-						<div class="card-text my-3">
-							<span class="article-category">اقتصاد</span>
-							<h5 class="article-title">لوريوم أيكسسيبتيور الأحمد نص</h5>
-							<p>
-								أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايمكيواس نوستريد
 
-								أكسير سيتاشن يللأمكو لابورأس نيسي يت أليكيوب أكس أيا كوممودو كونسيكيوات
-							</p>
-						</div>
-					</a>
-				</div>
-				<div class="col-md-6">
-					<a href="article.html" class="article-link">
-						<div class="row">
-							<div class="col-sm-6">
-								<img src="<?php echo get_template_directory_uri() . './images/picture-10.jpg' ?>" alt="...">
-							</div>
-							<div class="col-sm-6">
-								<div class="card-text mb-3 card-text-2">
-									<span class="article-category">
-										تكنولوجيا
-									</span>
-									<h5 class="article-title">
-										أنكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايمكيواس نوستريد
-									</h5>
-								</div>
-							</div>
-						</div>
-					</a>
-					<div class="row mt-4">
-						<div class="col-sm-6">
-							<a href="article.html" class="article-link">
-								<img src="<?php echo get_template_directory_uri() . './images/picture-13.jpg' ?>" alt="...">
-								<div class="card-text my-3">
-									<span class="article-category">
-										حاسوب
-									</span>
-									<h5 class="article-title">
-										نكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايمكيواس نوستريد
-									</h5>
-								</div>
+			<div class="row">
+				<?php $recent_posts = new WP_Query('posts_per_page=4');
+
+				while ($recent_posts->have_posts()) : $recent_posts->the_post();
+
+					if ($recent_posts->current_post == 0) { // show fist post with large image
+				?>
+						<div class="col-md-6">
+
+							<a href="<?php the_permalink(); ?>">
+								<?php if (has_post_thumbnail()) {
+									the_post_thumbnail();
+								} else { ?>
+									<img src="<?php bloginfo('template_directory'); ?>/images/default.jpg" alt="<?php the_title(); ?>" />
+								<?php } ?>
 							</a>
+							<div class="card-text my-3">
+								<span class="article-category"><?php the_category('، '); ?></span>
+								<h5 class="article-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+							</div>
 						</div>
-						<div class="col-sm-6">
-							<a href="article.html" class="article-link">
-								<img src="<?php echo get_template_directory_uri() . './images/picture-17.jpg' ?>" alt="...">
-								<div class="card-text my-3">
-									<span class="article-category">
-										اخبار
-									</span>
-									<h5 class="article-title">
-										نكايديديونتيوت لابوري ات دولار ماجنا أليكيوا . يوت انيم أد مينيم فينايمكيواس نوستريد
-									</h5>
+					<?php
+					} elseif ($recent_posts->current_post == 1) { // show second post with medium image
+
+					?>
+						<div class="col-md-6">
+							<div class="row">
+								<div class="col-sm-6">
+									<a href="<?php the_permalink(); ?>">
+										<?php if (has_post_thumbnail()) {
+											the_post_thumbnail();
+										} else { ?>
+											<img src="<?php bloginfo('template_directory'); ?>/images/default.jpg" alt="<?php the_title(); ?>" />
+										<?php } ?>
+									</a>
 								</div>
-							</a>
+								<div class="col-sm-6">
+									<div class="card-text mb-3 card-text-2">
+										<span class="article-category">
+											<?php the_category('، '); ?>
+										</span>
+										<h5 class="article-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+									</div>
+								</div>
+							</div>
+						<?php } elseif ($recent_posts->current_post == 2) { // show third post with medium image
+						?>
+							<div class="row mt-4">
+								<div class="col-sm-6">
+									<a href="<?php the_permalink(); ?>">
+										<?php if (has_post_thumbnail()) {
+											the_post_thumbnail();
+										} else { ?>
+											<img src="<?php bloginfo('template_directory'); ?>/images/default.jpg" alt="<?php the_title(); ?>" />
+										<?php } ?>
+									</a>
+									<div class="card-text my-3">
+										<span class="article-category">
+											<?php the_category('، '); ?>
+										</span>
+										<h5 class="article-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+									</div>
+								</div>
+							<?php } else { // show other posts with small image
+								?>
+								<div class="col-sm-6">
+
+									<a href="<?php the_permalink(); ?>">
+										<?php if (has_post_thumbnail()) {
+											the_post_thumbnail();
+										} else { ?>
+											<img src="<?php bloginfo('template_directory'); ?>/images/default.jpg" alt="<?php the_title(); ?>" />
+										<?php } ?>
+									</a>
+									<div class="card-text my-3">
+										<span class="article-category">
+											<?php the_category('، '); ?>
+										</span>
+										<h5 class="article-title"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h5>
+									</div>
+
+								</div>
+							</div>
 						</div>
-					</div>
-				</div>
 			</div>
-			<div class="text-center mt-5">
-				<a href="#" class="btn button">االمزيد</a>
-			</div>
+		<?php } ?>
+	<?php endwhile; ?>
+
+	<div class="text-center mt-5">
+		<a href="#" class="btn button">المزيد</a>
+	</div>
 		</div>
 	</section>
 </main>
