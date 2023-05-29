@@ -449,31 +449,39 @@ add_filter('random_password', function ($password) { // use the password field t
 		$password = $_POST['pass1']; // set the password to the value of the password field
 	}
 
-	return $password; 
+	return $password;
 });
 
 
 function auto_login_new_user($user_id) // auto login after registration and redirect to the home page
 {
 	wp_set_current_user($user_id); // automatically login the user
-	wp_set_auth_cookie($user_id); 
+	wp_set_auth_cookie($user_id);
 	wp_redirect(home_url());
 	exit;
 }
 add_action('user_register', 'auto_login_new_user');
 
-function remove_admin_bar(){ // only show the admin bar to the admin
+function remove_admin_bar()
+{ // only show the admin bar to the admin
 	if (!current_user_can('administrator') && !is_admin()) {
 		show_admin_bar(false);
 	}
 }
 add_action('after_setup_theme', 'remove_admin_bar');
 
-require get_template_directory() . '/includes/opinion-cpt.php'; // cpt is custom post type
+require get_template_directory() . '/includes/opinion-cpt.php'; // cpt is for custom post type
 
-function custom_pagination($query){
-	if($query->is_archive('opinion')){ // if the user is on the opinion archive page
+function custom_pagination($query)
+{
+	// if ($query->is_archive('opinion')) { // if the user is on the opinion archive page
+	// 	set_query_var('posts_per_page', 3); // show 3 posts per page
+	// }
+	if (!is_admin()) { // dont apply the pagination on the admin panel
 		set_query_var('posts_per_page', 3); // show 3 posts per page
 	}
 }
 add_action('pre_get_posts', 'custom_pagination');
+
+
+require get_template_directory() . '/includes/video-cpt.php'; // cpt is for custom post type

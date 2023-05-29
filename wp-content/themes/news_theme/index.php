@@ -283,88 +283,44 @@ get_header();
 			<h2 class="section-title">
 				فيديو
 			</h2>
+			<?php
+			$args = array(
+				'post_type' => 'video',
+				'post_status' => 'publish',
+				'posts_per_page' => 8,
+			);
+
+			$query = new WP_Query($args);
+			?>
+
 			<div class="swiper">
 				<div class="swiper-wrapper">
-					<div class="swiper-slide">
-						<a href="article.html" class="article-link">
-							<div class="slide-img">
-								<img src="<?php echo get_template_directory_uri() . './images/picture-13.jpg' ?>" alt="...">
-								<i class="fa-solid fa-play"></i>
-							</div>
-							<div class="slide-text">
-								<h5 class="article-title">
-									لوريوم أيكسسيبتيور الأحمد نص
-								</h5>
-							</div>
-						</a>
-					</div>
-					<div class="swiper-slide">
-						<a href="article.html" class="article-link">
-							<div class="slide-img">
-								<img src="<?php echo get_template_directory_uri() . './images/picture-17.jpg' ?>" alt="...">
-								<i class="fa-solid fa-play"></i>
-							</div>
-							<div class="slide-text">
-								<h5 class="article-title">
-									لوريوم أيكسسيبتيور الأحمد نص
-								</h5>
-							</div>
-						</a>
-					</div>
-					<div class="swiper-slide">
-						<a href="article.html" class="article-link">
-							<div class="slide-img">
-								<img src="<?php echo get_template_directory_uri() . './images/picture-16.jpg' ?>" alt="...">
-								<i class="fa-solid fa-play"></i>
-							</div>
-							<div class="slide-text">
-								<h5 class="article-title">
-									لوريوم أيكسسيبتيور الأحمد نص
-								</h5>
-							</div>
-						</a>
-					</div>
-					<div class="swiper-slide">
-						<a href="article.html" class="article-link">
-							<div class="slide-img">
-								<img src="<?php echo get_template_directory_uri() . './images/picture-15.jpg' ?>" alt="...">
-								<i class="fa-solid fa-play"></i>
-							</div>
-							<div class="slide-text">
-								<h5 class="article-title">
-									لوريوم أيكسسيبتيور الأحمد نص
-								</h5>
-							</div>
-						</a>
-					</div>
-					<div class="swiper-slide">
-						<a href="article.html" class="article-link">
-							<div class="slide-img">
-								<img src="<?php echo get_template_directory_uri() . './images/picture-8.jpg' ?>" alt="...">
-								<i class="fa-solid fa-play"></i>
-							</div>
-							<div class="slide-text">
-								<h5 class="article-title">
-									لوريوم أيكسسيبتيور الأحمد نص
-								</h5>
-							</div>
-						</a>
-					</div>
-					<div class="swiper-slide">
-						<a href="article.html" class="article-link">
-							<div class="slide-img">
-								<img src="<?php echo get_template_directory_uri() . './images/picture-5.jpg' ?>" alt="...">
-								<i class="fa-solid fa-play"></i>
-							</div>
-							<div class="slide-text">
-								<h5 class="article-title">
-									لوريوم أيكسسيبتيور الأحمد نص
-								</h5>
-							</div>
-						</a>
-					</div>
+					<?php while ($query->have_posts()) : $query->the_post(); ?>
+						<div class="swiper-slide">
+							<a href="<?php the_permalink(); ?>" class="article-link">
+								<div class="slide-img">
+									<?php if (has_post_thumbnail()) {
+										the_post_thumbnail();
+									} else { ?>
+										<img src="<?php bloginfo('template_directory'); ?>/images/default.jpg" alt="<?php the_title(); ?>" />
+									<?php } ?>
+									<i class="fa-solid fa-play"></i>
+								</div>
+								<div class="slide-text">
+									<h5 class="article-title">
+										<?php the_title(); ?>
+									</h5>
+								</div>
+							</a>
+						</div>
+					<?php endwhile; ?>
 				</div>
 				<div class="swiper-pagination"></div>
+			</div>
+			<div class="text-center mt-5">
+				<a href=" <?php echo get_post_type_archive_link('video') ?> " class="py-1 button">
+					المزيد
+				</a>
 			</div>
 		</div>
 	</section>
