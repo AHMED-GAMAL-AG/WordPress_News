@@ -86,7 +86,6 @@ Before you begin, make sure you have the following:
    - Save and close the file.
 
 ## Step 4: Upload WordPress Files
-skip this step if you use the website locally
 
 1. Using FTP or SSH, upload all the WordPress files and directories to your web server.
 2. If you're using FTP, make sure to upload the files to the correct directory, typically the root directory of your domain or subdomain.
